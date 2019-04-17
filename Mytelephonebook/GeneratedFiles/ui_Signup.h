@@ -159,6 +159,9 @@ public:
     {
         Signup->setWindowTitle(QApplication::translate("Signup", "Signup", nullptr));
         Btn_register->setText(QApplication::translate("Signup", "\346\263\250\345\206\214", nullptr));
+#ifndef QT_NO_SHORTCUT
+        Btn_register->setShortcut(QApplication::translate("Signup", "Return", nullptr));
+#endif // QT_NO_SHORTCUT
         label->setText(QApplication::translate("Signup", "\350\276\223\345\205\245\350\264\246\346\210\267:", nullptr));
         label_2->setText(QApplication::translate("Signup", "\350\276\223\345\205\245\345\257\206\347\240\201:", nullptr));
         label_3->setText(QApplication::translate("Signup", "\347\241\256\350\256\244\345\257\206\347\240\201:", nullptr));

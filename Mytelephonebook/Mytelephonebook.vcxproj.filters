@@ -48,6 +48,9 @@
     <ClCompile Include="Addcontact.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Usermanage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Login.h">
@@ -62,6 +65,9 @@
     <QtMoc Include="Addcontact.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="Usermanage.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Login.ui">
@@ -74,6 +80,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="Addcontact.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Usermanage.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

@@ -16,7 +16,6 @@ void Login::on_Btn_login_clicked(bool) {
   QString pwd = ui.LE_pwd->text();
   qDebug() << query.exec(QObject::tr("select * from user where uusername = '%1'").arg(username));
   if (query.size() == 0) {
-    //QMessageBox::warning(NULL, QStringLiteral("提示"), QString::fromUtf8("这是汉字"), QMessageBox::Yes);
     ui.label_hint2->setText("");
     ui.label_hint1->setText("");
     QPalette pa;
@@ -24,26 +23,40 @@ void Login::on_Btn_login_clicked(bool) {
     ui.label_hint1->setPalette(pa);
     ui.label_hint1->setText(QStringLiteral("账户不存在，请注册！"));
   }
-  else if(query.next() && query.value(3).toString() == pwd){
+  else if(query.next()){
     ui.label_hint2->setText("");
     ui.label_hint1->setText("");
-    Phonebook* PB = new Phonebook();
-    PB->setUserName(username);
-    PB->fresh();
-    connect(PB, SIGNAL(sendlogoutsignals(bool)), this, SLOT(reshow()));
-    ui.LE_username->setText(QString(""));
-    ui.LE_pwd->setText(QString(""));
-    this->hide();
-    PB->show();
+    QString tpwd = query.value(3).toString();
+    int access = query.value(1).toInt();
+    qDebug() << tpwd << access;
+    if (tpwd == pwd && access == 1) {
+      Usermanage* um = new Usermanage();
+      connect(um, SIGNAL(sendulogoutsignals(bool)), this, SLOT(reshow()));
+      ui.LE_username->setText(QString(""));
+      ui.LE_pwd->setText(QString(""));
+      this->hide();
+      um->show();
+    }
+    else if (tpwd == pwd && access == 0) {
+      Phonebook* PB = new Phonebook();
+      PB->setUserName(username);
+      PB->fresh();
+      connect(PB, SIGNAL(sendlogoutsignals(bool)), this, SLOT(reshow()));
+      ui.LE_username->setText(QString(""));
+      ui.LE_pwd->setText(QString(""));
+      this->hide();
+      PB->show();
+    }
+    else {
+      ui.label_hint2->setText("");
+      ui.label_hint1->setText("");
+      QPalette pa;
+      pa.setColor(QPalette::WindowText, Qt::red);
+      ui.label_hint2->setPalette(pa);
+      ui.label_hint2->setText(QStringLiteral("账户或密码错误，请检查!"));
+    }
   }
-  else {
-    ui.label_hint2->setText("");
-    ui.label_hint1->setText("");
-    QPalette pa;
-    pa.setColor(QPalette::WindowText, Qt::red);
-    ui.label_hint2->setPalette(pa);
-    ui.label_hint2->setText(QStringLiteral("账户或密码错误，请检查!"));
-  }
+  
 }
 void Login::on_Btn_signup_clicked(bool) {
   Signup* signup = new Signup();

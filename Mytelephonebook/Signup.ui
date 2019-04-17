@@ -45,6 +45,9 @@
      <property name="text">
       <string>注册</string>
      </property>
+     <property name="shortcut">
+      <string>Return</string>
+     </property>
     </widget>
    </item>
    <item row="0" column="2">

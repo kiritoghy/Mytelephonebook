@@ -103,3 +103,13 @@ void Phonebook::on_Btn_Qphone_clicked(bool)
   ui->tableView->hideColumn(0);
   ui->tableView->hideColumn(1);
 }
+
+void Phonebook::on_Btn_import_clicked(bool)
+{
+  ImportDB();
+}
+
+void Phonebook::on_Btn_export_clicked(bool)
+{
+  ExportDB();
+}

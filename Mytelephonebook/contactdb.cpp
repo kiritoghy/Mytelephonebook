@@ -26,7 +26,7 @@ bool ConnectDB() {
     uusername varchar(40) NOT NULL,\
     upwd varchar(40) NOT NULL);"));
   qDebug() << query.exec(QObject::tr("INSERT INTO user (uaccess, uusername, upwd)\
-    SELECT 1, 'admin', 'ghy990217'\
+    SELECT 1, 'admin', 'admin'\
     from DUAL\
     where not exists(select uusername from user where uusername = 'admin');"));
 }

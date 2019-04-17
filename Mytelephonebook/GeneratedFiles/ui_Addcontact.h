@@ -154,6 +154,9 @@ public:
         label_2->setText(QApplication::translate("Addcontact", "\347\224\265\350\257\235:", nullptr));
         label_3->setText(QApplication::translate("Addcontact", "E-mail:", nullptr));
         Btn_addconf->setText(QApplication::translate("Addcontact", "\347\241\256\345\256\232", nullptr));
+#ifndef QT_NO_SHORTCUT
+        Btn_addconf->setShortcut(QApplication::translate("Addcontact", "Return", nullptr));
+#endif // QT_NO_SHORTCUT
     } // retranslateUi
 
 };

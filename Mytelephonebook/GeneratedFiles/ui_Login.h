@@ -154,6 +154,9 @@ public:
         label->setText(QApplication::translate("LoginClass", "\350\264\246\346\210\267:", nullptr));
         label_2->setText(QApplication::translate("LoginClass", "\345\257\206\347\240\201:", nullptr));
         Btn_login->setText(QApplication::translate("LoginClass", "\347\231\273\345\275\225", nullptr));
+#ifndef QT_NO_SHORTCUT
+        Btn_login->setShortcut(QApplication::translate("LoginClass", "Return", nullptr));
+#endif // QT_NO_SHORTCUT
         Btn_signup->setText(QApplication::translate("LoginClass", "\346\263\250\345\206\214", nullptr));
         label_hint1->setText(QString());
         label_hint2->setText(QString());
