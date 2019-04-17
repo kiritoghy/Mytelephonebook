@@ -13,7 +13,6 @@ public:
 
 private:
     Ui::LoginClass ui;
-    QSqlTableModel* model;
 private:
   void init();
 private slots:

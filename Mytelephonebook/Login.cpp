@@ -11,13 +11,31 @@ Login::Login(QWidget *parent)
 void Login::init() {
 }
 void Login::on_Btn_login_clicked(bool) {
-
-  Phonebook* PB = new Phonebook();
-  connect(PB, SIGNAL(sendlogoutsignals(bool)), this, SLOT(reshow()));
-  ui.LE_username->setText(QString(""));
-  ui.LE_pwd->setText(QString(""));
-  this->hide();
-  PB->show();
+  QSqlQuery query;
+  QString username = ui.LE_username->text();
+  QString pwd = ui.LE_pwd->text();
+  qDebug() << query.exec(QObject::tr("select * from user where uusername = '%1'").arg(username));
+  if (query.size() == 0) {
+    //QMessageBox::warning(NULL, QStringLiteral("提示"), QString::fromUtf8("这是汉字"), QMessageBox::Yes);
+    QPalette pa;
+    pa.setColor(QPalette::WindowText, Qt::red);
+    ui.label_hint1->setPalette(pa);
+    ui.label_hint1->setText(QStringLiteral("账户不存在，请注册！"));
+  }
+  else if(query.next() && query.value(3).toString() == pwd){
+    Phonebook* PB = new Phonebook();
+    connect(PB, SIGNAL(sendlogoutsignals(bool)), this, SLOT(reshow()));
+    ui.LE_username->setText(QString(""));
+    ui.LE_pwd->setText(QString(""));
+    this->hide();
+    PB->show();
+  }
+  else {
+    QPalette pa;
+    pa.setColor(QPalette::WindowText, Qt::red);
+    ui.label_hint2->setPalette(pa);
+    ui.label_hint2->setText(QStringLiteral("账户或密码错误，请检查!"));
+  }
 }
 void Login::on_Btn_signup_clicked(bool) {
   Signup* signup = new Signup();

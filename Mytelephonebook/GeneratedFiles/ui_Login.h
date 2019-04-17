@@ -9,6 +9,7 @@
 #ifndef UI_LOGIN_H
 #define UI_LOGIN_H
 
+#include <QtCore/QLocale>
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
@@ -27,7 +28,6 @@ class Ui_LoginClass
 public:
     QGridLayout *gridLayout;
     QSpacerItem *verticalSpacer_2;
-    QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
@@ -39,7 +39,10 @@ public:
     QHBoxLayout *horizontalLayout_3;
     QPushButton *Btn_login;
     QPushButton *Btn_signup;
+    QLabel *label_hint1;
+    QSpacerItem *horizontalSpacer;
     QSpacerItem *horizontalSpacer_2;
+    QLabel *label_hint2;
     QSpacerItem *verticalSpacer;
 
     void setupUi(QWidget *LoginClass)
@@ -54,10 +57,6 @@ public:
         verticalSpacer_2 = new QSpacerItem(20, 140, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         gridLayout->addItem(verticalSpacer_2, 0, 1, 1, 1);
-
-        horizontalSpacer = new QSpacerItem(187, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer, 1, 0, 1, 1);
 
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(6);
@@ -118,15 +117,30 @@ public:
         verticalLayout_2->addLayout(horizontalLayout_3);
 
 
-        gridLayout->addLayout(verticalLayout_2, 1, 1, 1, 1);
+        gridLayout->addLayout(verticalLayout_2, 1, 1, 3, 1);
+
+        label_hint1 = new QLabel(LoginClass);
+        label_hint1->setObjectName(QString::fromUtf8("label_hint1"));
+        label_hint1->setLocale(QLocale(QLocale::C, QLocale::AnyCountry));
+
+        gridLayout->addWidget(label_hint1, 1, 2, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(187, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer, 2, 0, 1, 1);
 
         horizontalSpacer_2 = new QSpacerItem(187, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout->addItem(horizontalSpacer_2, 1, 2, 1, 1);
+        gridLayout->addItem(horizontalSpacer_2, 2, 2, 1, 1);
+
+        label_hint2 = new QLabel(LoginClass);
+        label_hint2->setObjectName(QString::fromUtf8("label_hint2"));
+
+        gridLayout->addWidget(label_hint2, 3, 2, 1, 1);
 
         verticalSpacer = new QSpacerItem(20, 139, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout->addItem(verticalSpacer, 2, 1, 1, 1);
+        gridLayout->addItem(verticalSpacer, 4, 1, 1, 1);
 
 
         retranslateUi(LoginClass);
@@ -141,6 +155,8 @@ public:
         label_2->setText(QApplication::translate("LoginClass", "\345\257\206\347\240\201:", nullptr));
         Btn_login->setText(QApplication::translate("LoginClass", "\347\231\273\345\275\225", nullptr));
         Btn_signup->setText(QApplication::translate("LoginClass", "\346\263\250\345\206\214", nullptr));
+        label_hint1->setText(QString());
+        label_hint2->setText(QString());
     } // retranslateUi
 
 };
