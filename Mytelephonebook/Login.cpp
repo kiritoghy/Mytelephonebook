@@ -28,6 +28,8 @@ void Login::on_Btn_login_clicked(bool) {
     ui.label_hint2->setText("");
     ui.label_hint1->setText("");
     Phonebook* PB = new Phonebook();
+    PB->setUserName(username);
+    PB->fresh();
     connect(PB, SIGNAL(sendlogoutsignals(bool)), this, SLOT(reshow()));
     ui.LE_username->setText(QString(""));
     ui.LE_pwd->setText(QString(""));

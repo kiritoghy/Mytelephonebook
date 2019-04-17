@@ -18,7 +18,7 @@
     <rect>
      <x>9</x>
      <y>40</y>
-     <width>401</width>
+     <width>461</width>
      <height>431</height>
     </rect>
    </property>
@@ -26,9 +26,9 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>230</y>
-     <width>181</width>
+     <x>480</x>
+     <y>270</y>
+     <width>151</width>
      <height>40</height>
     </rect>
    </property>
@@ -36,7 +36,7 @@
     <item>
      <widget class="QLabel" name="label_2">
       <property name="text">
-       <string>            电话</string>
+       <string>          电话</string>
       </property>
      </widget>
     </item>
@@ -48,8 +48,8 @@
   <widget class="QPushButton" name="Btn_Qname">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>130</y>
+     <x>520</x>
+     <y>220</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -61,8 +61,8 @@
   <widget class="QPushButton" name="Btn_Qphone">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>290</y>
+     <x>520</x>
+     <y>330</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -71,12 +71,34 @@
     <string>查询</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>631</width>
+     <height>25</height>
+    </rect>
+   </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QPushButton" name="Btn_new">
       <property name="text">
        <string>新建</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="Btn_save">
+      <property name="text">
+       <string>保存</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="Btn_undo">
+      <property name="text">
+       <string>撤销</string>
       </property>
      </widget>
     </item>
@@ -110,12 +132,12 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>80</y>
-     <width>181</width>
+     <x>480</x>
+     <y>170</y>
+     <width>151</width>
      <height>40</height>
     </rect>
    </property>
@@ -123,7 +145,7 @@
     <item>
      <widget class="QLabel" name="label">
       <property name="text">
-       <string>            姓名</string>
+       <string>          姓名</string>
       </property>
      </widget>
     </item>
@@ -131,6 +153,45 @@
      <widget class="QLineEdit" name="LE_Qname"/>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>60</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>双击内容修改</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>90</y>
+     <width>121</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>修改后请点击保存</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Btn_all">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>370</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>查看全部</string>
+   </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
