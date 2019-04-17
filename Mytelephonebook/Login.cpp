@@ -17,12 +17,16 @@ void Login::on_Btn_login_clicked(bool) {
   qDebug() << query.exec(QObject::tr("select * from user where uusername = '%1'").arg(username));
   if (query.size() == 0) {
     //QMessageBox::warning(NULL, QStringLiteral("提示"), QString::fromUtf8("这是汉字"), QMessageBox::Yes);
+    ui.label_hint2->setText("");
+    ui.label_hint1->setText("");
     QPalette pa;
     pa.setColor(QPalette::WindowText, Qt::red);
     ui.label_hint1->setPalette(pa);
     ui.label_hint1->setText(QStringLiteral("账户不存在，请注册！"));
   }
   else if(query.next() && query.value(3).toString() == pwd){
+    ui.label_hint2->setText("");
+    ui.label_hint1->setText("");
     Phonebook* PB = new Phonebook();
     connect(PB, SIGNAL(sendlogoutsignals(bool)), this, SLOT(reshow()));
     ui.LE_username->setText(QString(""));
@@ -31,6 +35,8 @@ void Login::on_Btn_login_clicked(bool) {
     PB->show();
   }
   else {
+    ui.label_hint2->setText("");
+    ui.label_hint1->setText("");
     QPalette pa;
     pa.setColor(QPalette::WindowText, Qt::red);
     ui.label_hint2->setPalette(pa);

@@ -1,5 +1,5 @@
 ﻿#pragma once
-
+#include "contactdb.h"
 #include <QWidget>
 namespace Ui { class Signup; };
 

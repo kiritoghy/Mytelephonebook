@@ -26,8 +26,13 @@ class Ui_Signup
 {
 public:
     QGridLayout *gridLayout;
+    QSpacerItem *horizontalSpacer_2;
+    QSpacerItem *verticalSpacer;
+    QPushButton *Btn_register;
     QSpacerItem *verticalSpacer_3;
     QSpacerItem *horizontalSpacer;
+    QSpacerItem *horizontalSpacer_3;
+    QSpacerItem *verticalSpacer_2;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
@@ -38,12 +43,8 @@ public:
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_3;
     QLineEdit *LE_confpwd;
-    QSpacerItem *horizontalSpacer_2;
-    QSpacerItem *verticalSpacer;
-    QSpacerItem *horizontalSpacer_3;
-    QPushButton *Btn_register;
     QSpacerItem *horizontalSpacer_4;
-    QSpacerItem *verticalSpacer_2;
+    QLabel *label_hint3;
 
     void setupUi(QWidget *Signup)
     {
@@ -54,6 +55,19 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        horizontalSpacer_2 = new QSpacerItem(68, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_2, 1, 4, 1, 1);
+
+        verticalSpacer = new QSpacerItem(20, 48, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer, 3, 2, 1, 1);
+
+        Btn_register = new QPushButton(Signup);
+        Btn_register->setObjectName(QString::fromUtf8("Btn_register"));
+
+        gridLayout->addWidget(Btn_register, 4, 2, 1, 1);
+
         verticalSpacer_3 = new QSpacerItem(20, 49, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         gridLayout->addItem(verticalSpacer_3, 0, 2, 1, 1);
@@ -61,6 +75,14 @@ public:
         horizontalSpacer = new QSpacerItem(68, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         gridLayout->addItem(horizontalSpacer, 1, 0, 1, 1);
+
+        horizontalSpacer_3 = new QSpacerItem(68, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_3, 4, 1, 1, 1);
+
+        verticalSpacer_2 = new QSpacerItem(20, 49, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer_2, 5, 2, 1, 1);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
@@ -116,32 +138,16 @@ public:
         verticalLayout->addLayout(horizontalLayout_3);
 
 
-        gridLayout->addLayout(verticalLayout, 1, 1, 1, 3);
-
-        horizontalSpacer_2 = new QSpacerItem(68, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer_2, 1, 4, 1, 1);
-
-        verticalSpacer = new QSpacerItem(20, 48, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout->addItem(verticalSpacer, 2, 2, 1, 1);
-
-        horizontalSpacer_3 = new QSpacerItem(68, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer_3, 3, 1, 1, 1);
-
-        Btn_register = new QPushButton(Signup);
-        Btn_register->setObjectName(QString::fromUtf8("Btn_register"));
-
-        gridLayout->addWidget(Btn_register, 3, 2, 1, 1);
+        gridLayout->addLayout(verticalLayout, 1, 1, 2, 3);
 
         horizontalSpacer_4 = new QSpacerItem(67, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout->addItem(horizontalSpacer_4, 3, 3, 1, 1);
+        gridLayout->addItem(horizontalSpacer_4, 4, 3, 1, 1);
 
-        verticalSpacer_2 = new QSpacerItem(20, 49, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        label_hint3 = new QLabel(Signup);
+        label_hint3->setObjectName(QString::fromUtf8("label_hint3"));
 
-        gridLayout->addItem(verticalSpacer_2, 4, 2, 1, 1);
+        gridLayout->addWidget(label_hint3, 2, 4, 1, 1);
 
 
         retranslateUi(Signup);
@@ -152,10 +158,11 @@ public:
     void retranslateUi(QWidget *Signup)
     {
         Signup->setWindowTitle(QApplication::translate("Signup", "Signup", nullptr));
+        Btn_register->setText(QApplication::translate("Signup", "\346\263\250\345\206\214", nullptr));
         label->setText(QApplication::translate("Signup", "\350\276\223\345\205\245\350\264\246\346\210\267:", nullptr));
         label_2->setText(QApplication::translate("Signup", "\350\276\223\345\205\245\345\257\206\347\240\201:", nullptr));
         label_3->setText(QApplication::translate("Signup", "\347\241\256\350\256\244\345\257\206\347\240\201:", nullptr));
-        Btn_register->setText(QApplication::translate("Signup", "\346\263\250\345\206\214", nullptr));
+        label_hint3->setText(QString());
     } // retranslateUi
 
 };
