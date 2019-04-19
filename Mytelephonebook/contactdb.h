@@ -7,8 +7,7 @@
 #include <QtSql/QSqlError>
 #include <QObject> 
 #include <QMessageBox>
+#include <QFileDialog>
 bool ConnectDB();
-void ImportDB();
-void ExportDB();
 #endif // !CONTACTDB_H
 

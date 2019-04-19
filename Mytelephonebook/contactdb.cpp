@@ -30,9 +30,3 @@ bool ConnectDB() {
     from DUAL\
     where not exists(select uusername from user where uusername = 'admin');"));
 }
-void ImportDB() {
-
-}
-void ExportDB() {
-
-}
