@@ -41,6 +41,7 @@ public:
     QPushButton *Btn_logout;
     QPushButton *Btn_import;
     QPushButton *Btn_export;
+    QPushButton *Btn_merge;
     QWidget *layoutWidget2;
     QVBoxLayout *verticalLayout;
     QLabel *label;
@@ -53,7 +54,7 @@ public:
     {
         if (Phonebook->objectName().isEmpty())
             Phonebook->setObjectName(QString::fromUtf8("Phonebook"));
-        Phonebook->resize(636, 480);
+        Phonebook->resize(644, 480);
         tableView = new QTableView(Phonebook);
         tableView->setObjectName(QString::fromUtf8("tableView"));
         tableView->setGeometry(QRect(9, 40, 461, 431));
@@ -83,7 +84,7 @@ public:
         Btn_Qphone->setGeometry(QRect(520, 330, 75, 23));
         layoutWidget1 = new QWidget(Phonebook);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(0, 0, 631, 25));
+        layoutWidget1->setGeometry(QRect(0, 0, 644, 25));
         horizontalLayout = new QHBoxLayout(layoutWidget1);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
@@ -123,6 +124,11 @@ public:
         Btn_export->setObjectName(QString::fromUtf8("Btn_export"));
 
         horizontalLayout->addWidget(Btn_export);
+
+        Btn_merge = new QPushButton(layoutWidget1);
+        Btn_merge->setObjectName(QString::fromUtf8("Btn_merge"));
+
+        horizontalLayout->addWidget(Btn_merge);
 
         layoutWidget2 = new QWidget(Phonebook);
         layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
@@ -170,6 +176,7 @@ public:
         Btn_logout->setText(QApplication::translate("Phonebook", "\346\263\250\351\224\200", nullptr));
         Btn_import->setText(QApplication::translate("Phonebook", "\345\257\274\345\205\245", nullptr));
         Btn_export->setText(QApplication::translate("Phonebook", "\345\257\274\345\207\272", nullptr));
+        Btn_merge->setText(QApplication::translate("Phonebook", "\345\220\210\345\271\266", nullptr));
         label->setText(QApplication::translate("Phonebook", "          \345\247\223\345\220\215", nullptr));
         label_3->setText(QApplication::translate("Phonebook", "\345\217\214\345\207\273\345\206\205\345\256\271\344\277\256\346\224\271", nullptr));
         label_4->setText(QApplication::translate("Phonebook", "\344\277\256\346\224\271\345\220\216\350\257\267\347\202\271\345\207\273\344\277\235\345\255\230", nullptr));

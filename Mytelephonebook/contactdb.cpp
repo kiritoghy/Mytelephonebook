@@ -4,10 +4,11 @@ QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");     //驱动
 bool ConnectDB() {
   db.setHostName("localhost");          //数据库地址，一般都是本地，就填localhost就可以 
   db.setUserName("root");               //用户名，一般是本地用户，就填root就可以
-  db.setPassword("0000");             //密码，填写你自己的Mysql登陆密码，为了保密我这里用*代替我的密码
+  db.setPassword("0000");             //密码，填写你自己的Mysql登陆密码
   db.setPort(3306);                   //端口默认的是3306，可以不用写 
   if (!db.open()){
-    QMessageBox::warning(NULL, QStringLiteral("提示"), "数据库连接失败，请重启", QMessageBox::Yes);
+    QMessageBox::warning(NULL, QStringLiteral("提示"), QStringLiteral("数据库连接失败，请重启"), QMessageBox::Yes);
+    QMessageBox::warning(NULL, QStringLiteral("提示"), QString(db.lastError().text()), QMessageBox::Yes);
     return false;
   }
   QSqlQuery query;

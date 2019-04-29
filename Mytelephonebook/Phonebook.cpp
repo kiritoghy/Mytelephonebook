@@ -107,7 +107,7 @@ void Phonebook::on_Btn_Qphone_clicked(bool)
 void Phonebook::on_Btn_import_clicked(bool)
 {
   QFileDialog* fileDialog = new QFileDialog(this);
-  //fileDialog->setWindowTitle(tr("O"));//设置文件保存对话框的标题
+  fileDialog->setWindowTitle(tr("Open"));//设置文件保存对话框的标题
   fileDialog->setAcceptMode(QFileDialog::AcceptOpen);//设置文件对话框为保存模式
   fileDialog->setFileMode(QFileDialog::AnyFile);//设置文件对话框弹出的时候显示任何文件，不论是文件夹还是文件
   fileDialog->setViewMode(QFileDialog::Detail);//文件以详细的形式显示，显示文件名，大小，创建日期等信息；
@@ -133,17 +133,6 @@ void Phonebook::on_Btn_import_clicked(bool)
 
 void Phonebook::on_Btn_export_clicked(bool)
 {
-  /*QFileDialog* fileDialog = new QFileDialog(this);
-  QString fileName = fileDialog->getSaveFileName(this,
-    tr("Save AS"), ".", tr("CSV FILES(*.csv)"));*/
-  /*qDebug() << fileName;
-  QSqlQuery query;
-  if (!query.exec(QObject::tr("select * from phonebook where susername = '%1'\
-    into outfile '%2'\
-    fields terminated by ',' optionally enclosed by '\"'\
-    lines terminated by '\r\n'; ").arg(this->username).arg(fileName))) {
-    QMessageBox::warning(this, QStringLiteral("导出错误！"), QString(query.lastError().text()),QMessageBox::Yes);
-  }*/
   QFileDialog* fileDialog = new QFileDialog(this);
   fileDialog->setWindowTitle(tr("Save As"));//设置文件保存对话框的标题
   fileDialog->setAcceptMode(QFileDialog::AcceptSave);//设置文件对话框为保存模式
@@ -160,5 +149,59 @@ void Phonebook::on_Btn_export_clicked(bool)
     lines terminated by '\r\n'; ").arg(this->username).arg(filename))) {
       QMessageBox::warning(this, QStringLiteral("导出错误！"), QString(query.lastError().text()), QMessageBox::Yes);
     }
+    else {
+      QMessageBox::information(this, QStringLiteral("消息"), QStringLiteral("导出成功！"), QMessageBox::Yes, QMessageBox::Yes);
+    }
   }
+}
+
+void Phonebook::on_Btn_merge_clicked(bool)
+{
+  QSqlQuery query;
+  qDebug() << query.exec(QObject::tr("CREATE TABLE IF NOT EXISTS merge (\
+    sid INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,\
+    susername varchar(40),\
+    sname varchar(255) default NULL,\
+    snumber varchar(255) default NULL,\
+    semail varchar(255) default NULL) ENGINE = InnoDB DEFAULT CHARSET = utf8;"));
+  QFileDialog* fileDialog = new QFileDialog(this);
+  fileDialog->setWindowTitle(tr("Select"));//设置文件保存对话框的标题
+  fileDialog->setAcceptMode(QFileDialog::AcceptOpen);//设置文件对话框为保存模式
+  fileDialog->setFileMode(QFileDialog::ExistingFiles);//设置文件对话框弹出的时候显示任何文件，不论是文件夹还是文件
+  fileDialog->setViewMode(QFileDialog::Detail);//文件以详细的形式显示，显示文件名，大小，创建日期等信息；
+  fileDialog->setDirectory(".");
+  fileDialog->setNameFilter(tr("csv (*.csv)"));
+  if (fileDialog->exec() == QFileDialog::Accepted) {
+    QStringList filenames = fileDialog->selectedFiles();
+    for (int i = 0; i < filenames.size(); ++i) {
+      qDebug() << filenames[i];
+      if (!query.exec(QObject::tr("load data infile '%1'\
+        into table merge\
+        fields terminated by ','  optionally enclosed by '\"' escaped by '\"'  \
+        lines terminated by '\r\n'\
+        (@sid,susername,sname, snumber,semail) set susername = '%2';").arg(filenames[i]).arg(QString("merge")))) {
+        QMessageBox::warning(this, QStringLiteral("合并错误！"), QString(query.lastError().text()), QMessageBox::Yes);
+      }
+    }
+  }
+  fileDialog->setWindowTitle(tr("Save As"));//设置文件保存对话框的标题
+  fileDialog->setAcceptMode(QFileDialog::AcceptSave);//设置文件对话框为保存模式
+  fileDialog->setFileMode(QFileDialog::AnyFile);//设置文件对话框弹出的时候显示任何文件，不论是文件夹还是文件
+  fileDialog->setViewMode(QFileDialog::Detail);//文件以详细的形式显示，显示文件名，大小，创建日期等信息；
+  fileDialog->setDirectory(".");
+  fileDialog->setNameFilter(tr("csv (*.csv)"));
+  if (fileDialog->exec() == QFileDialog::Accepted) {
+    QString filename = fileDialog->selectedFiles()[0];
+    QSqlQuery query;
+    if (!query.exec(QObject::tr("select * from merge where susername = '%1'\
+    into outfile '%2'\
+    fields terminated by ',' optionally enclosed by '\"'\
+    lines terminated by '\r\n'; ").arg(QString("merge")).arg(filename))) {
+      QMessageBox::warning(this, QStringLiteral("合并错误！"), QString(query.lastError().text()), QMessageBox::Yes);
+    }
+    else {
+      QMessageBox::information(this, QStringLiteral("消息"), QStringLiteral("合并成功！"), QMessageBox::Yes, QMessageBox::Yes);
+    }
+  }
+  query.exec(QObject::tr("drop table merge"));
 }

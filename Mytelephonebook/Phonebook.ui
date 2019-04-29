@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>636</width>
+    <width>644</width>
     <height>480</height>
    </rect>
   </property>
@@ -76,7 +76,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>631</width>
+     <width>644</width>
      <height>25</height>
     </rect>
    </property>
@@ -127,6 +127,13 @@
      <widget class="QPushButton" name="Btn_export">
       <property name="text">
        <string>导出</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="Btn_merge">
+      <property name="text">
+       <string>合并</string>
       </property>
      </widget>
     </item>
